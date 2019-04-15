@@ -10,7 +10,7 @@
           <p>{{film.opening_crawl}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button routerLink="/detail/id">Detail</button>
+          <button mat-button (click)="detail(film.episode_id)">Detail</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

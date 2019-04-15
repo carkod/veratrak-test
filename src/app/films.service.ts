@@ -23,4 +23,10 @@ export class FilmsService {
     return req;
   }
 
+  getSingleFilm(id: Number): Observable<any> {
+    const reqUrl = `${environment.host + environment.films}${id}`;
+    const req = this.http.get(reqUrl, httpOptions);
+    return req;
+  }
+
 }

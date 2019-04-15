@@ -22,7 +22,8 @@ import { RouteRoutingModule } from './route/route-routing.module';
     ListComponent,
     DetailComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    MovieFormComponent
   ],
   imports: [
     BrowserModule,

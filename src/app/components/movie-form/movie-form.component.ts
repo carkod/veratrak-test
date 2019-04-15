@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-movie-form',
@@ -7,17 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieFormComponent implements OnInit {
 
-  model = {
-    title: '',
-    director: '',
-    release: '',
-  };
+  @Input() details;
 
   constructor() {
   }
 
   ngOnInit() {
   }
+
 
   onSubmit(form) {
     console.log(form);
