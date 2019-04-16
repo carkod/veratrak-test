@@ -50,3 +50,40 @@ Please explain your approach in a README file.
 - between parent-child components
 - between deeply nested components with less frequent updates
 - between deeply nested components that require regular data manipulation and UI update
+
+
+# Response
+
+### 1. Components and Routes
+
+All components have been generated with Angular-cli as specified, this includes:
+
+- "Page" components: Detail, Listing, Home, Route
+- Other reusable components are in the components folder
+- A very simple Login has been created without authentication
+- Detail page uses routing id to get data
+- One single service has been created to request data from swapi (this is not my common practice, usually I would create an entire folder and separate all different requests)
+
+
+### 2. Movie-form component
+
+I have changed `ngModel` to a more modern approach to reactive forms, which is using formControlName:
+
+- It brings validation with just an additional function (Validators), without messing with the HTML
+- You do not need to worry about getting the values in `this.fieldName` as Angular forms does this work by providing a composed object `this.form.value` (in this project)
+- Still it leverages the power of ngModel, without two-way binding.
+
+### 3. State management
+
+As this was a project put up in a few hours, I haven't bothered to create a state architecture. This application uses simple Input biding to push and pull state from and to child and parent components using Input and Event Emitters.
+
+However, here is my experience. Quick solution for already running projects:
+- Create a service using Subjects e.g.:
+
+`
+export class CommunicatorService {
+
+  // Observable string sources
+  private announcedNotAppsSelectedSource = new Subject<string>();
+}
+`

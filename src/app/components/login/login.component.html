@@ -1,6 +1,9 @@
-<ng-template #guard>
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button routerLink="/list">Submit</button>
-  </div>
-</ng-template>
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+  <mat-form-field>
+    <input matInput formControlName="email" type="text" name="email" placeholder="Email" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="password" type="password" name="password" placeholder="Password" />
+  </mat-form-field>
+  <button mat-button type="submit">Submit</button>
+</form>

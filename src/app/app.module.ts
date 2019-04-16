@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatDialogModule, MatFormFieldModule, MatGridListModule } from '@angular/material';
+import { MatCardModule, MatDialogModule, MatFormFieldModule, MatGridListModule, MatDialogRef, MatInputModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -29,7 +29,6 @@ import { RouteRoutingModule } from './route/route-routing.module';
     BrowserModule,
     FormsModule,
     MatFormFieldModule,
-    MatDialogModule,
     BrowserAnimationsModule,
     RouterModule,
     RouteRoutingModule,
@@ -37,10 +36,12 @@ import { RouteRoutingModule } from './route/route-routing.module';
     MatCardModule,
     MatDialogModule,
     MatGridListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
-    FilmsService
+    FilmsService,
   ],
   bootstrap: [AppComponent]
 })

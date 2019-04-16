@@ -1,30 +1,28 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef, TemplateRef } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Input } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  @ViewChild('guard') guard: TemplateRef<any>;
-  password: string;
-  email: string;
+export class LoginComponent {
 
-  constructor(public dialog: MatDialog) { }
+  loginForm: FormGroup;
 
-  ngOnInit() {
-    
+  constructor(private router: Router) {
+    this.createForm();
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(this.guard, {
-      width: '250px',
-      data: { email: this.email, password: this.password }
+  createForm() {
+    this.loginForm = new FormGroup({
+      'email': new FormControl(''),
+      'password': new FormControl(''),
     });
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  onSubmit() {
+    this.router.navigate(['list']);
   }
 }
