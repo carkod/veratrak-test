@@ -77,13 +77,51 @@ I have changed `ngModel` to a more modern approach to reactive forms, which is u
 
 As this was a project put up in a few hours, I haven't bothered to create a state architecture. This application uses simple Input biding to push and pull state from and to child and parent components using Input and Event Emitters.
 
-However, here is my experience. Quick solution for already running projects:
-- Create a service using Subjects e.g.:
+However, here is my experience. Deeply nested solution for already running projects:
 
-`
+1. Create a service using Subjects e.g.:
+
+~~~~
+
+@Injectable()
 export class CommunicatorService {
+ 
+  private stateUpdate = new Subject<string>();
 
-  // Observable string sources
-  private announcedNotAppsSelectedSource = new Subject<string>();
+  stateUpdate$ = this.stateUpdate.asObservable();
+
+  constructor() { }
+
+  annouceStateUpdate(state) {
+    this.stateUpdate.next(state);
+  }
 }
-`
+~~~~
+
+2. Use the service in far parents/siblings/family members
+
+~~~~
+
+// Emitter
+this.CommunicatorService.annouceStateUpdate(state);
+
+// Receiver
+this.CommunicatorService.stateUpdate$.subscribe(state => {
+    console.log('received state', state);
+});
+
+~~~~
+
+Although this is not my favorite solution. I would use a state management library that keeps state hydrated constantly such as Redux, so the entire application is aware of state changes:
+
+
+~~~~
+
+{
+    movieFormModalOpen: true,
+    loggedInUser: true,
+    detailPage: false,
+    ....
+}
+
+~~~~
