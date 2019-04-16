@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   host: 'https://swapi.co/api/',
-  films: 'films/'
+  films: 'films/',
+  post: 'https://httpbin.org/post'
 };
 
 /*

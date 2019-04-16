@@ -9,17 +9,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
 
-  data: any;
+  filmData: any;
   constructor(private films: FilmsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      this.films.getSingleFilm(id).subscribe(res => {
-        this.data = res;
-      })
+      this.filmData = this.films.getSingleFilm(id);
     });
-    
   }
 
 }

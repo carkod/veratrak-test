@@ -1,24 +1,30 @@
-<form #myForm (submit)="onSubmit(myForm)">
+<div class="container">
+  <div class="left">
+    <form [formGroup]="form" (submit)="onSubmit()">
 
-  <div class="form-group">
-    <label>Title</label>
-    <input class="form-control" type="text" [(ngModel)]="model.title" name="title"/>
+      <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" formControlName="title" />
+      </div>
+
+      <div class="form-group">
+        <label>Director</label>
+        <input class="form-control" type="text" formControlName="director" />
+      </div>
+
+      <div class="form-group">
+        <label for="release">Release date</label>
+        <input id="release" class="form-control" type="text" formControlName="release" />
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+
+    </form>
   </div>
-
-  <div class="form-group">
-    <label>Director</label>
-    <input class="form-control" type="text" [(ngModel)]="model.director" name="director"/>
+  <div class="right" style="text-align: center">
+    Result  
+    <pre>{{form.value | json}}</pre>
   </div>
-
-  <div class="form-group">
-    <label for="release">Release date</label>
-    <input id="release" class="form-control" type="text" [(ngModel)]="model.release" name="release"/>
-  </div>
-
-  <div class="form-group">
-    <button class="btn btn-primary">Submit</button>
-  </div>
-
-</form>
-
-<pre>{{model | json}}</pre>
+</div>

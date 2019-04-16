@@ -29,4 +29,10 @@ export class FilmsService {
     return req;
   }
 
+  postSingleFilm(body): Observable<any> {
+    const reqUrl = `${environment.post}`;
+    const req = this.http.post(reqUrl, body, httpOptions);
+    return req;
+  }
+
 }
