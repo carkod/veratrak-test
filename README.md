@@ -54,6 +54,11 @@ Please explain your approach in a README file.
 
 # Response
 
+## Project commands
+
+1. The usual `npm install && ng serve` should work fine
+
+
 ### 1. Components and Routes
 
 All components have been generated with Angular-cli as specified, this includes:
